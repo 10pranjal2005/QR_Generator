@@ -1,0 +1,17 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyB29IE0PVxYN0OGJWbK3AdBX8wrX68ja9k",
+  authDomain: "qr-message-app.firebaseapp.com",
+  projectId: "qr-message-app",
+  storageBucket: "qr-message-app.firebasestorage.app",
+  messagingSenderId: "173024470469",
+  appId: "1:173024470469:web:bf10c0d0d1885b990017ac"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);

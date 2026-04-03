@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create QR Message</title>
+    <link rel="stylesheet" href="css/style.css?v=5">
+    <style>
+      .qr-style-selector {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 15px 0;
+      }
+      .qr-style-selector label {
+        cursor: pointer;
+      }
+      .qr-style-selector input[type="radio"] {
+        display: none;
+      }
+      .style-box {
+        border: 2px solid rgba(255,255,255,0.1);
+        padding: 12px 5px;
+        border-radius: 12px;
+        text-align: center;
+        background: rgba(255,255,255,0.05);
+        transition: all 0.3s ease;
+        font-size: 0.85rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+      .style-box span {
+        font-size: 1.5rem;
+      }
+      .qr-style-selector input[type="radio"]:checked + .style-box {
+        border-color: #ff4757 !important;
+        box-shadow: 0 0 10px rgba(255, 71, 87, 0.4);
+        background: rgba(255, 71, 87, 0.15) !important;
+      }
+      .tab-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .tab-btn {
+        flex: 1;
+        padding: 10px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 10px;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: none;
+        margin-bottom: 0;
+      }
+      .tab-btn.active {
+        background: rgba(255, 71, 87, 0.2);
+        border-color: #ff4757;
+        color: white; /* FIXED: Removed the # from #white */
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="logout()">Logout</button>
+        
+        <h2 id="userEmail">Welcome</h2>
+        <p style="margin-bottom: 20px; color: var(--text-secondary);">Craft your hidden message below.</p>
+        
+        <div class="tab-header">
+            <button class="tab-btn active" onclick="switchTab('messageTab', this)">📝 Message</button>
+            <button class="tab-btn" onclick="switchTab('photoTab', this)">🖼️ Photo</button>
+            <button class="tab-btn" onclick="switchTab('videoTab', this)">🎥 Video</button>
+        </div>
+
+        <div id="messageTab" class="tab-content active">
+            <input id="opening" placeholder="Opening (Example: Hi Rahul,)">
+            <textarea id="message" placeholder="Write your heartfelt message here..."></textarea>
+            <input id="closing" placeholder="Closing (Example: From Pranjal)">
+        </div>
+
+        <div id="photoTab" class="tab-content">
+            <p style="text-align: left; font-size: 0.9rem; color: #ffccd5; margin-bottom: 8px;">Upload Photo (Max 1MB):</p>
+            <input type="file" id="photoInput" accept="image/*">
+        </div>
+
+        <div id="videoTab" class="tab-content">
+            <p style="text-align: left; font-size: 0.9rem; color: #ffccd5; margin-bottom: 8px;">Upload Video (Max 5MB):</p>
+            <input type="file" id="videoInput" accept="video/*">
+        </div>
+        
+        <p style="margin-top: 15px; text-align: left; font-size: 0.9rem; color: #ffccd5; font-weight: 600;">Choose QR Shape & Style:</p>
+        <div class="qr-style-selector">
+            <label>
+                <input type="radio" name="qrStyle" value="standard" checked>
+                <div class="style-box">
+                    <span>🏁</span>
+                    Standard
+                </div>
+            </label>
+            <label>
+                <input type="radio" name="qrStyle" value="heart">
+                <div class="style-box">
+                    <span>❤️</span>
+                    Heart Shape
+                </div>
+            </label>
+            <label>
+                <input type="radio" name="qrStyle" value="center-heart">
+                <div class="style-box">
+                    <span>🎯</span>
+                    Center Heart
+                </div>
+            </label>
+        </div>
+        
+        <button id="generateBtn" onclick="generateQR()">Generate Love QR</button>
+    </div>
+
+    <div id="qrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); z-index:1000; align-items:center; justify-content:center;">
+        <div class="container" style="position:relative; max-width:320px; background:rgba(40,0,0,0.9); border:2px solid var(--primary-glow); padding:20px;">
+            <span onclick="closeModal()" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:var(--text-secondary);">&times;</span>
+            <h3 style="margin-bottom:15px; font-family:'Poppins', sans-serif; font-size:1.1rem; color:var(--text-primary);">Your Love QR is Ready!</h3>
+            <div id="qr" style="margin-bottom:15px; display:flex; justify-content:center;"></div>
+            <button id="downloadQR" onclick="downloadQR()">Download QR</button>
+            <button id="printQR" onclick="printQR()">Print QR</button>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
