@@ -8,22 +8,36 @@
 </head>
 <body>
 
-  <div class="container">
-    <h2>Join the Romance 💖</h2>
-    <p style="margin-bottom: 25px;">Create an account to start sending messages.</p>
-    
-    <input id="userName" type="text" placeholder="Your Name" required style="margin-bottom: 15px;">
-    
-    <input id="email" type="email" placeholder="Your Email">
-    <input id="password" type="password" placeholder="Choose a Password">
-    
-    <button onclick="signup()">Sign Up</button>
-    
-    <p style="margin-top: 15px;">
-      Already have an account? 
-      <a href="index.html">Login instead</a>
-    </p>
-  </div>
+    <nav class="navbar">
+        <div class="nav-brand">Love Notes 💌</div>
+        <div class="nav-links">
+            <a href="index.html">Login</a>
+            <a href="signup.html">Signup</a>
+        </div>
+    </nav>
+
+    <div class="app-main-content">
+        <div class="container">
+            <h2>Join the Romance 💖</h2>
+            <p style="margin-bottom: 25px;">Create an account to start sending messages.</p>
+            
+            <input id="userName" type="text" placeholder="Your Name" required style="margin-bottom: 15px;">
+            
+            <input id="email" type="email" placeholder="Your Email">
+            <input id="password" type="password" placeholder="Choose a Password">
+            
+            <button onclick="signup()">Sign Up</button>
+            
+            <p style="margin-top: 15px;">
+              Already have an account? 
+              <a href="index.html">Login instead</a>
+            </p>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>Made with ❤️ by <strong>Pranjal Kundu</strong> | <a href="https://github.com/10pranjal2005" target="_blank">GitHub Repo</a></p>
+    </footer>
 
   <script type="module" src="script.js"></script>
 </body>

@@ -22,11 +22,66 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Changed to column to stack Nav, Content, Footer */
+  justify-content: space-between; /* Pushes footer to the bottom */
   align-items: center;
   overflow-y: auto; 
   position: relative;
-  padding: 20px;
+  padding: 0; /* Handled by layout spacing now */
+}
+
+/* NEW NAV & FOOTER STYLES TO MATCH YOUR UI/UX */
+.navbar {
+  width: 100%;
+  background: var(--glass-red);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 100, 100, 0.2);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: var(--primary-glow);
+  text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+.nav-links a {
+  margin-left: 15px;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+.app-main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.main-footer {
+  width: 100%;
+  background: rgba(26, 0, 0, 0.8);
+  border-top: 1px solid rgba(255, 100, 100, 0.1);
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.main-footer a {
+  color: var(--primary-glow);
+  text-decoration: underline;
 }
 
 .container, .card {

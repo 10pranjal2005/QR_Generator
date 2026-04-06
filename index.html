@@ -1,23 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Message App - Login</title>
     <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
-    <div class="container">
-        <h2>Love Notes 💌</h2>
-        <p style="margin-bottom: 20px;">Log in to create secret messages.</p>
-        
-        <input id="email" placeholder="Your Email">
-        <input id="password" type="password" placeholder="Password">
-        <button onclick="login()">Access Your Heart</button>
-        <p>
-            Don't have an account? 
-            <a href="signup.html">Signup here</a>
-        </p>
+
+    <nav class="navbar">
+        <div class="nav-brand">Love Notes 💌</div>
+        <div class="nav-links">
+            <a href="index.html">Login</a>
+            <a href="signup.html">Signup</a>
+        </div>
+    </nav>
+
+    <div class="app-main-content">
+        <div class="container">
+            <h2>Love Notes 💌</h2>
+            <p style="margin-bottom: 20px;">Log in to create secret messages.</p>
+            
+            <input id="email" placeholder="Your Email">
+            <input id="password" type="password" placeholder="Password">
+            <button onclick="login()">Access Your Heart</button>
+            <p>
+                Don't have an account? 
+                <a href="signup.html">Signup here</a>
+            </p>
+        </div>
     </div>
+
+    <footer class="main-footer">
+        <p>Made with ❤️ by <strong>Pranjal Kundu</strong> | <a href="https://github.com/10pranjal2005" target="_blank">GitHub Repo</a></p>
+    </footer>
+
     <script type="module" src="script.js"></script>
 </body>
 </html>

@@ -61,7 +61,7 @@
       .tab-btn.active {
         background: rgba(255, 71, 87, 0.2);
         border-color: #ff4757;
-        color: white; /* FIXED: Removed the # from #white */
+        color: white; 
       }
       .tab-content {
         display: none;
@@ -72,60 +72,68 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <button onclick="logout()">Logout</button>
-        
-        <h2 id="userEmail">Welcome</h2>
-        <p style="margin-bottom: 20px; color: var(--text-secondary);">Craft your hidden message below.</p>
-        
-        <div class="tab-header">
-            <button class="tab-btn active" onclick="switchTab('messageTab', this)">📝 Message</button>
-            <button class="tab-btn" onclick="switchTab('photoTab', this)">🖼️ Photo</button>
-            <button class="tab-btn" onclick="switchTab('videoTab', this)">🎥 Video</button>
-        </div>
 
-        <div id="messageTab" class="tab-content active">
-            <input id="opening" placeholder="Opening (Example: Hi Rahul,)">
-            <textarea id="message" placeholder="Write your heartfelt message here..."></textarea>
-            <input id="closing" placeholder="Closing (Example: From Pranjal)">
+    <nav class="navbar">
+        <div class="nav-brand">Love Notes 💌</div>
+        <div class="nav-links">
+            <button onclick="logout()" style="position: static; width: auto; margin-bottom: 0;">Logout</button>
         </div>
+    </nav>
 
-        <div id="photoTab" class="tab-content">
-            <p style="text-align: left; font-size: 0.9rem; color: #ffccd5; margin-bottom: 8px;">Upload Photo (Max 1MB):</p>
-            <input type="file" id="photoInput" accept="image/*">
-        </div>
+    <div class="app-main-content">
+        <div class="container">
+            <h2 id="userEmail">Welcome</h2>
+            <p style="margin-bottom: 20px; color: var(--text-secondary);">Craft your hidden message below.</p>
+            
+            <div class="tab-header">
+                <button class="tab-btn active" onclick="switchTab('messageTab', this)">📝 Message</button>
+                <button class="tab-btn" onclick="switchTab('photoTab', this)">🖼️ Photo</button>
+                <button class="tab-btn" onclick="switchTab('videoTab', this)">🎥 Video</button>
+            </div>
 
-        <div id="videoTab" class="tab-content">
-            <p style="text-align: left; font-size: 0.9rem; color: #ffccd5; margin-bottom: 8px;">Upload Video (Max 5MB):</p>
-            <input type="file" id="videoInput" accept="video/*">
+            <div id="messageTab" class="tab-content active">
+                <input id="opening" placeholder="Opening (Example: Hi Rahul,)">
+                <textarea id="message" placeholder="Write your heartfelt message here..."></textarea>
+                <input id="closing" placeholder="Closing (Example: From Pranjal)">
+            </div>
+
+            <div id="photoTab" class="tab-content">
+                <p style="text-align: left; font-size: 0.9rem; color: #ffccd5; margin-bottom: 8px;">Upload Photo (Max 1MB):</p>
+                <input type="file" id="photoInput" accept="image/*">
+            </div>
+
+            <div id="videoTab" class="tab-content">
+                <p style="text-align: left; font-size: 0.9rem; color: #ffccd5; margin-bottom: 8px;">Upload Video (Max 5MB):</p>
+                <input type="file" id="videoInput" accept="video/*">
+            </div>
+            
+            <p style="margin-top: 15px; text-align: left; font-size: 0.9rem; color: #ffccd5; font-weight: 600;">Choose QR Shape & Style:</p>
+            <div class="qr-style-selector">
+                <label>
+                    <input type="radio" name="qrStyle" value="standard" checked>
+                    <div class="style-box">
+                        <span>🏁</span>
+                        Standard
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" name="qrStyle" value="heart">
+                    <div class="style-box">
+                        <span>❤️</span>
+                        Heart Shape
+                    </div>
+                </label>
+                <label>
+                    <input type="radio" name="qrStyle" value="center-heart">
+                    <div class="style-box">
+                        <span>🎯</span>
+                        Center Heart
+                    </div>
+                </label>
+            </div>
+            
+            <button id="generateBtn" onclick="generateQR()">Generate Love QR</button>
         </div>
-        
-        <p style="margin-top: 15px; text-align: left; font-size: 0.9rem; color: #ffccd5; font-weight: 600;">Choose QR Shape & Style:</p>
-        <div class="qr-style-selector">
-            <label>
-                <input type="radio" name="qrStyle" value="standard" checked>
-                <div class="style-box">
-                    <span>🏁</span>
-                    Standard
-                </div>
-            </label>
-            <label>
-                <input type="radio" name="qrStyle" value="heart">
-                <div class="style-box">
-                    <span>❤️</span>
-                    Heart Shape
-                </div>
-            </label>
-            <label>
-                <input type="radio" name="qrStyle" value="center-heart">
-                <div class="style-box">
-                    <span>🎯</span>
-                    Center Heart
-                </div>
-            </label>
-        </div>
-        
-        <button id="generateBtn" onclick="generateQR()">Generate Love QR</button>
     </div>
 
     <div id="qrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); z-index:1000; align-items:center; justify-content:center;">
@@ -137,6 +145,10 @@
             <button id="printQR" onclick="printQR()">Print QR</button>
         </div>
     </div>
+
+    <footer class="main-footer">
+        <p>Made with ❤️ by <strong>Pranjal Kundu</strong> | <a href="https://github.com/10pranjal2005" target="_blank">GitHub Repo</a></p>
+    </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script type="module" src="script.js"></script>
