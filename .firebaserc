@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "qr-message-app"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
